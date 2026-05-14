@@ -1,45 +1,53 @@
 // components/DifferentialsSection.jsx
 // Seção de diferenciais e métricas da plataforma
-// Exibe os números de impacto e os motivos para escolher a Uni Saúde
+// Contém três partes: métricas de impacto, cards de diferenciais e banner de especialidades
 
-import * as LucideIcons from "lucide-react";
-import { differentials, metrics } from "../data";
+import * as LucideIcons        from "lucide-react"
+import { differentials, metrics } from "../data"
 
-// Componente interno para exibir uma métrica
+// ========== COMPONENTE INTERNO ==========
+// MetricCard é um componente auxiliar usado apenas nesta seção
+// Por isso fica no mesmo arquivo em vez de ter um arquivo separado
 // Recebe value, label e icon via props
 function MetricCard({ value, label, icon }) {
-  const Icon = LucideIcons[icon] || LucideIcons.TrendingUp;
+
+  // Carrega o ícone dinamicamente pelo nome recebido via props
+  const Icon = LucideIcons[icon] || LucideIcons.TrendingUp
 
   return (
     <div className="col-6 col-lg-3">
       <div
         className="card border-0 shadow-sm rounded-4 p-4 text-center h-100"
         style={{ transition: "transform 0.2s" }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.transform = "translateY(-4px)")
-        }
-        onMouseLeave={(e) =>
-          (e.currentTarget.style.transform = "translateY(0)")
-        }
+        onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
+        onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
       >
+        {/* Ícone em círculo verde claro */}
         <div
           className="rounded-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 mx-auto mb-3"
           style={{ width: 48, height: 48 }}
         >
           <Icon size={22} className="text-success" />
         </div>
+
+        {/* Valor da métrica em destaque */}
         <h3 className="fw-bold text-dark mb-1">{value}</h3>
+
+        {/* Descrição da métrica */}
         <small className="text-secondary">{label}</small>
       </div>
     </div>
-  );
+  )
 }
 
+// ========== COMPONENTE PRINCIPAL ==========
 export function DifferentialsSection() {
   return (
     <section id="differentials" className="py-5 bg-white">
       <div className="container py-4">
-        {/* Métricas */}
+
+        {/* ---- MÉTRICAS ---- */}
+        {/* col-6 col-lg-3: 2 por linha em mobile, 4 por linha em desktop */}
         <div className="row g-4 mb-5">
           {metrics.map((metric) => (
             <MetricCard
@@ -51,16 +59,9 @@ export function DifferentialsSection() {
           ))}
         </div>
 
-        {/* Header */}
+        {/* ---- CABEÇALHO ---- */}
         <div className="text-center mb-5">
-          <span
-            className="badge rounded-pill px-3 py-2 mb-3 d-inline-block"
-            style={{
-              background: "#f0faf4",
-              color: "#187c51",
-              border: "1px solid #b4e6c9",
-            }}
-          >
+          <span className="badge rounded-pill px-3 py-2 mb-3 d-inline-block badge-brand">
             POR QUE ESCOLHER A UNI SAÚDE
           </span>
           <h2 className="display-6 fw-bold text-dark mb-3">
@@ -73,22 +74,26 @@ export function DifferentialsSection() {
           </p>
         </div>
 
-        {/* Grid de diferenciais */}
+        {/* ---- CARDS DE DIFERENCIAIS ---- */}
         <div className="row g-4 mb-5">
           {differentials.map((item) => {
-            const Icon = LucideIcons[item.icon] || LucideIcons.Star;
+            // Carrega o ícone de cada diferencial dinamicamente
+            const Icon = LucideIcons[item.icon] || LucideIcons.Star
+
             return (
               <div className="col-12 col-sm-6 col-lg-4" key={item.id}>
                 <div
                   className="p-4 rounded-4 border border-light h-100"
                   style={{ transition: "all 0.2s" }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "#b4e6c9";
-                    e.currentTarget.style.background = "#f0faf4";
+                    // Muda a borda e o fundo ao passar o mouse
+                    e.currentTarget.style.borderColor = "#b4e6c9"
+                    e.currentTarget.style.background  = "#f0faf4"
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "";
-                    e.currentTarget.style.background = "";
+                    // Volta ao estado original ao sair
+                    e.currentTarget.style.borderColor = ""
+                    e.currentTarget.style.background  = ""
                   }}
                 >
                   <div
@@ -98,37 +103,28 @@ export function DifferentialsSection() {
                     <Icon size={18} className="text-success" />
                   </div>
                   <h6 className="fw-semibold text-dark mb-2">{item.title}</h6>
-                  <p className="text-secondary small mb-0">
-                    {item.description}
-                  </p>
+                  <p className="text-secondary small mb-0">{item.description}</p>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
 
-        {/* Banner de especialidades */}
+        {/* ---- BANNER DE ESPECIALIDADES ---- */}
         <div
           className="rounded-4 p-5 text-white text-center"
           style={{ background: "linear-gradient(135deg, #22c55e, #14b8a6)" }}
         >
-          <h3 className="fw-bold mb-2">
-            Mais de 50 especialidades disponíveis
-          </h3>
+          <h3 className="fw-bold mb-2">Mais de 50 especialidades disponíveis</h3>
           <p className="opacity-75 mb-4">
             Cardiologia, pediatria, saúde mental, nutrição e muito mais.
           </p>
+
+          {/* Tags de especialidades — geradas a partir de um array estático */}
           <div className="d-flex flex-wrap gap-2 justify-content-center">
             {[
-              "Clínica Geral",
-              "Cardiologia",
-              "Pediatria",
-              "Psicologia",
-              "Nutrição",
-              "Dermatologia",
-              "Ginecologia",
-              "Ortopedia",
-              "+ 42 outras",
+              "Clínica Geral", "Cardiologia", "Pediatria", "Psicologia",
+              "Nutrição", "Dermatologia", "Ginecologia", "Ortopedia", "+ 42 outras",
             ].map((esp) => (
               <span
                 key={esp}
@@ -143,7 +139,8 @@ export function DifferentialsSection() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
-  );
+  )
 }

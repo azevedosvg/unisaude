@@ -1,24 +1,18 @@
 // components/ServicesSection.jsx
-// Seção que exibe todos os cards de serviços
-// Importa os dados do arquivo de dados e renderiza um ServiceCard para cada serviço
+// Seção que exibe todos os cards de serviços da plataforma
+// Importa os dados do arquivo central e passa cada serviço como props para o ServiceCard
 
-import { ServiceCard } from "./ServiceCard";
-import { services } from "../data";
+import { ServiceCard } from "./ServiceCard"
+import { services }    from "../data"
 
 export function ServicesSection() {
   return (
     <section id="services" className="py-5" style={{ background: "#f8fafc" }}>
       <div className="container py-4">
-        {/* Header da seção */}
+
+        {/* Cabeçalho da seção */}
         <div className="text-center mb-5">
-          <span
-            className="badge rounded-pill px-3 py-2 mb-3 d-inline-block"
-            style={{
-              background: "#f0faf4",
-              color: "#187c51",
-              border: "1px solid #b4e6c9",
-            }}
-          >
+          <span className="badge rounded-pill px-3 py-2 mb-3 d-inline-block badge-brand">
             NOSSOS SERVIÇOS
           </span>
           <h2 className="display-6 fw-bold text-dark mb-3">
@@ -31,12 +25,16 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* Grid de cards — Bootstrap grid responsivo */}
-        {/* col-12 em mobile, col-6 em tablet, col-4 em desktop */}
+        {/* Grid responsivo de cards — Bootstrap grid de 12 colunas */}
+        {/* col-12: 1 card por linha em mobile */}
+        {/* col-sm-6: 2 cards por linha em tablet */}
+        {/* col-lg-4: 3 cards por linha em desktop */}
         <div className="row g-4">
           {services.map((service) => (
             <div className="col-12 col-sm-6 col-lg-4" key={service.id}>
-              {/* Cada serviço do array vira um ServiceCard com seus dados via props */}
+
+              {/* Cada objeto do array "services" vira um ServiceCard */}
+              {/* Os dados são passados individualmente como props */}
               <ServiceCard
                 title={service.title}
                 description={service.description}
@@ -45,10 +43,12 @@ export function ServicesSection() {
                 featured={service.featured}
                 cta={service.cta}
               />
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
-  );
+  )
 }

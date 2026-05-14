@@ -1,24 +1,28 @@
 // components/Footer.jsx
 // Rodapé da aplicação
-// Contém CTA final, links de navegação, redes sociais e copyright
+// Contém: CTA final, links organizados por categoria, ícone de rede social e copyright
 
-import { Heart, Mail, ArrowUp } from "lucide-react";
+import { Heart, Mail, ArrowUp } from "lucide-react"
 
-// Links organizados por categoria para o rodapé
+// Links do rodapé organizados por categoria
+// Usamos um objeto onde cada chave é o título do grupo
 const footerLinks = {
-  Plataforma: ["Serviços", "Planos", "Para empresas", "API para clínicas"],
-  Saúde: ["Teleconsulta", "Exames", "Prontuário", "Monitoramento"],
-  Suporte: ["Central de ajuda", "Fale conosco", "Status", "Documentação"],
-  Empresa: ["Sobre nós", "Blog", "Carreiras", "Imprensa"],
-};
+  "Plataforma": ["Serviços", "Planos", "Para empresas", "API para clínicas"],
+  "Saúde":      ["Teleconsulta", "Exames", "Prontuário", "Monitoramento"  ],
+  "Suporte":    ["Central de ajuda", "Fale conosco", "Status", "Documentação"],
+  "Empresa":    ["Sobre nós", "Blog", "Carreiras", "Imprensa"              ],
+}
 
 export function Footer() {
-  // Função para voltar ao topo da página com scroll suave
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // Rola suavemente de volta ao topo da página
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
   return (
     <footer className="bg-dark text-secondary">
-      {/* CTA final */}
+
+      {/* ========== CTA FINAL ========== */}
+      {/* Área de chamada para ação antes dos links do rodapé */}
       <div className="border-bottom border-secondary border-opacity-25">
         <div className="container py-5 text-center">
           <h2 className="fw-bold text-white mb-3">
@@ -29,21 +33,13 @@ export function Footer() {
           </p>
           <div className="d-flex flex-wrap gap-3 justify-content-center">
             <button
-              onClick={() =>
-                document
-                  .querySelector("#plans")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => document.querySelector("#plans")?.scrollIntoView({ behavior: "smooth" })}
               className="btn btn-success px-4 py-2 rounded-3"
             >
               Criar conta gratuita
             </button>
             <button
-              onClick={() =>
-                document
-                  .querySelector("#services")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}
               className="btn btn-outline-secondary px-4 py-2 rounded-3"
             >
               Ver serviços
@@ -52,10 +48,11 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Links */}
+      {/* ========== LINKS E BRAND ========== */}
       <div className="container py-5">
         <div className="row g-4 mb-5">
-          {/* Brand */}
+
+          {/* Coluna da marca — logo, descrição e ícone de contato */}
           <div className="col-12 col-md-3">
             <div className="d-flex align-items-center gap-2 mb-3">
               <div
@@ -69,10 +66,9 @@ export function Footer() {
               </span>
             </div>
             <p className="small text-secondary mb-4">
-              Plataforma de saúde digital que conecta pessoas a cuidados de
-              qualidade.
+              Plataforma de saúde digital que conecta pessoas a cuidados de qualidade.
             </p>
-            {/* Ícones sociais */}
+            {/* Ícone de e-mail como link de contato */}
             <div className="d-flex gap-2">
               <a
                 href="#"
@@ -84,7 +80,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links por categoria */}
+          {/* Colunas de links — geradas dinamicamente a partir do objeto footerLinks */}
+          {/* Object.entries() transforma o objeto em um array de [chave, valores] */}
           {Object.entries(footerLinks).map(([group, links]) => (
             <div className="col-6 col-md-2" key={group}>
               <p className="text-white fw-semibold small mb-3">{group}</p>
@@ -93,12 +90,10 @@ export function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-secondary text-decoration-none small hover-text-success"
+                      className="text-secondary text-decoration-none small"
                       style={{ transition: "color 0.2s" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#22c55e")
-                      }
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                      onMouseEnter={(e) => e.currentTarget.style.color = "#22c55e"}
+                      onMouseLeave={(e) => e.currentTarget.style.color = ""}
                     >
                       {link}
                     </a>
@@ -107,24 +102,20 @@ export function Footer() {
               </ul>
             </div>
           ))}
+
         </div>
 
-        {/* Bottom bar */}
+        {/* ========== BARRA INFERIOR — COPYRIGHT ========== */}
         <div className="border-top border-secondary border-opacity-25 pt-4 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
           <p className="small text-secondary mb-0">
             © 2025 Uni Saúde · Desenvolvido para fins acadêmicos
           </p>
           <div className="d-flex align-items-center gap-3">
-            <a href="#" className="small text-secondary text-decoration-none">
-              Privacidade
-            </a>
-            <a href="#" className="small text-secondary text-decoration-none">
-              Termos de uso
-            </a>
-            <a href="#" className="small text-secondary text-decoration-none">
-              Cookies
-            </a>
-            {/* Botão voltar ao topo */}
+            <a href="#" className="small text-secondary text-decoration-none">Privacidade</a>
+            <a href="#" className="small text-secondary text-decoration-none">Termos de uso</a>
+            <a href="#" className="small text-secondary text-decoration-none">Cookies</a>
+
+            {/* Botão de voltar ao topo */}
             <button
               onClick={scrollToTop}
               className="btn btn-sm rounded-2 d-flex align-items-center justify-content-center"
@@ -134,7 +125,8 @@ export function Footer() {
             </button>
           </div>
         </div>
+
       </div>
     </footer>
-  );
+  )
 }

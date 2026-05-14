@@ -1,50 +1,41 @@
 // components/HeroSection.jsx
 // Seção principal (banner) da página
-// Recebe título, subtítulo e textos dos botões via props
+// É a primeira coisa que o usuário vê ao abrir o site
+// Recebe o conteúdo textual via props para facilitar personalização
 
-import { ArrowRight, Play, CheckCircle2, Star, Users, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  Play,
+  CheckCircle2,
+  Star,
+  Search,
+  Clock,
+} from "lucide-react";
 
 // Props recebidas:
-// - title: título principal do banner
-// - subtitle: texto descritivo
-// - ctaText: texto do botão principal
-// - ctaSecondary: texto do botão secundário
+// - title: primeira parte do título principal
+// - subtitle: texto descritivo abaixo do título
+// - ctaText: texto do botão principal (verde)
+// - ctaSecondary: texto do botão secundário (outline)
 export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
+  // Horários disponíveis para agendamento — exibidos como botões de seleção
+  const horarios = ["09h00", "11h00", "14h00", "15h30", "17h00"];
+
   return (
-    <section
-      className="min-vh-100 d-flex align-items-center pt-5"
-      style={{
-        background:
-          "linear-gradient(135deg, #f0faf4 0%, #ffffff 50%, #f0fdfa 100%)",
-      }}
-    >
+    <section className="min-vh-100 d-flex align-items-center pt-5 hero-section">
       <div className="container py-5">
         <div className="row align-items-center g-5">
-          {/* Coluna esquerda — texto */}
+          {/* ========== COLUNA ESQUERDA — TEXTO ========== */}
           <div className="col-12 col-lg-6 d-flex flex-column gap-4">
-            {/* Badge de novidade */}
-            <div>
-              <span
-                className="badge rounded-pill d-inline-flex align-items-center gap-1 px-3 py-2"
-                style={{
-                  background: "#f0faf4",
-                  color: "#187c51",
-                  border: "1px solid #b4e6c9",
-                }}
-              >
-                <Zap size={12} /> Novo · Monitoramento com IA disponível
-              </span>
-            </div>
-
             {/* Título principal */}
-            <h1 className="display-4 fw-bold text-dark lh-sm">
+            <h1 className="display-4 fw-bold lh-sm">
               {title} <span className="text-success">você merece</span>
             </h1>
 
             {/* Subtítulo */}
             <p className="lead text-secondary">{subtitle}</p>
 
-            {/* Checklist */}
+            {/* Lista de vantagens rápidas */}
             <ul className="list-unstyled d-flex flex-column gap-2">
               {[
                 "Consultas em menos de 3 minutos",
@@ -88,9 +79,8 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
               </button>
             </div>
 
-            {/* Social proof */}
+            {/* Social proof — avatares empilhados + estrelas + contagem */}
             <div className="d-flex align-items-center gap-3">
-              {/* Avatares empilhados */}
               <div className="d-flex">
                 {["A", "C", "M", "R", "L"].map((initial, i) => (
                   <div
@@ -107,7 +97,6 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                 ))}
               </div>
               <div>
-                {/* Estrelas */}
                 <div className="d-flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -119,91 +108,132 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                   ))}
                 </div>
                 <small className="text-secondary">
-                  <strong className="text-dark">48.000+</strong> pacientes
-                  satisfeitos
+                  <strong>48.000+</strong> pacientes satisfeitos
                 </small>
               </div>
             </div>
           </div>
 
-          {/* Coluna direita — card visual */}
-          <div className="col-12 col-lg-6 position-relative">
-            <div
-              className="rounded-4 p-4 text-white position-relative overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #22c55e, #14b8a6)",
-              }}
-            >
-              {/* Header do card */}
-              <div className="d-flex justify-content-between align-items-start mb-4">
-                <div>
-                  <small className="opacity-75">Próxima consulta</small>
-                  <p className="fw-bold fs-5 mb-0">Hoje, 15h30</p>
-                </div>
-                <div
-                  className="rounded-3 d-flex align-items-center justify-content-center bg-white bg-opacity-25"
-                  style={{ width: 48, height: 48 }}
-                >
-                  <Users size={24} className="text-white" />
-                </div>
-              </div>
-
-              {/* Médico */}
-              <div className="rounded-3 p-3 mb-3 bg-white bg-opacity-25">
-                <div className="d-flex align-items-center gap-3">
-                  <div
-                    className="rounded-3 d-flex align-items-center justify-content-center bg-white bg-opacity-25 fw-bold small"
-                    style={{ width: 40, height: 40 }}
-                  >
-                    DS
-                  </div>
-                  <div className="flex-grow-1">
-                    <p className="fw-semibold small mb-0">Dra. Sofia Mendes</p>
-                    <small className="opacity-75">
-                      Cardiologista · CRM 54321
-                    </small>
-                  </div>
-                  <span
-                    className="badge rounded-pill"
-                    style={{ background: "rgba(255,255,255,0.2)" }}
-                  >
-                    Online
-                  </span>
-                </div>
-              </div>
-
-              {/* Sinais vitais */}
-              <div className="row g-2">
-                {[
-                  { label: "Pressão", value: "120/80", icon: "♥" },
-                  { label: "Glicemia", value: "95 mg/dL", icon: "⚡" },
-                  { label: "SpO₂", value: "98%", icon: "💧" },
-                ].map((item) => (
-                  <div key={item.label} className="col-4">
-                    <div className="rounded-3 p-2 text-center bg-white bg-opacity-10">
-                      <div>{item.icon}</div>
-                      <p className="fw-bold small mb-0">{item.value}</p>
-                      <small className="opacity-75">{item.label}</small>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Badge flutuante */}
-            <div
-              className="position-absolute bg-white rounded-3 shadow p-2 d-flex align-items-center gap-2"
-              style={{ top: -16, right: -8 }}
-            >
+          {/* ========== COLUNA DIREITA — CARD DE AGENDAMENTO ========== */}
+          {/* Simula como seria agendar uma consulta no app */}
+          {/* O botão de confirmar leva para a seção de planos */}
+          <div className="col-12 col-lg-6">
+            <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+              {/* Header do card com gradiente verde */}
               <div
-                className="rounded-2 d-flex align-items-center justify-content-center"
-                style={{ width: 32, height: 32, background: "#fef3c7" }}
+                className="p-4 text-white"
+                style={{
+                  background: "linear-gradient(135deg, #22c55e, #14b8a6)",
+                }}
               >
-                <Star size={14} fill="#f59e0b" className="text-warning" />
+                <p className="small opacity-75 mb-1">
+                  Plataforma de saúde digital
+                </p>
+                <h5 className="fw-bold mb-0">Agende sua consulta agora</h5>
               </div>
-              <div>
-                <p className="fw-bold small mb-0">4.98/5.0</p>
-                <small className="text-secondary">Avaliação</small>
+
+              <div className="p-4 d-flex flex-column gap-4">
+                {/* Campo de busca de especialidade */}
+                <div>
+                  <label className="form-label small fw-semibold text-dark">
+                    Buscar especialidade
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-white border-end-0">
+                      <Search size={16} className="text-secondary" />
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control border-start-0 ps-0"
+                      placeholder="Ex: Cardiologia, Psicologia..."
+                      defaultValue="Cardiologia"
+                    />
+                  </div>
+                </div>
+
+                {/* Médica disponível para a especialidade buscada */}
+                <div>
+                  <label className="form-label small fw-semibold text-dark">
+                    Profissional disponível
+                  </label>
+                  <div
+                    className="d-flex align-items-center gap-3 p-3 rounded-3 border border-success"
+                    style={{ background: "#f0faf4" }}
+                  >
+                    {/* Avatar com iniciais da médica */}
+                    <div
+                      className="rounded-3 d-flex align-items-center justify-content-center bg-success text-white fw-bold flex-shrink-0"
+                      style={{ width: 48, height: 48 }}
+                    >
+                      JM
+                    </div>
+                    <div className="flex-grow-1">
+                      <p className="fw-semibold small text-dark mb-0">
+                        Dra. Julia Marques
+                      </p>
+                      <small className="text-secondary">
+                        Cardiologista · CRM 54321
+                      </small>
+                      {/* Avaliação e número de consultas */}
+                      <div className="d-flex align-items-center gap-1 mt-1">
+                        <Star
+                          size={10}
+                          fill="#ffc107"
+                          className="text-warning"
+                        />
+                        <small
+                          className="text-secondary"
+                          style={{ fontSize: 11 }}
+                        >
+                          4.98 · 312 consultas realizadas
+                        </small>
+                      </div>
+                    </div>
+                    {/* Indicador de status online */}
+                    <span className="badge rounded-pill bg-success px-2 py-1 small">
+                      🟢 Online
+                    </span>
+                  </div>
+                </div>
+
+                {/* Horários disponíveis — o 15h30 vem selecionado por padrão */}
+                <div>
+                  <label className="form-label small fw-semibold text-dark d-flex align-items-center gap-1">
+                    <Clock size={14} className="text-success" /> Horários
+                    disponíveis hoje
+                  </label>
+                  <div className="d-flex flex-wrap gap-2">
+                    {horarios.map((horario, i) => (
+                      <button
+                        key={horario}
+                        className={`btn btn-sm rounded-3 ${i === 3 ? "btn-success" : "btn-outline-secondary"}`}
+                        style={{ minWidth: 72 }}
+                      >
+                        {horario}
+                      </button>
+                    ))}
+                  </div>
+                  <small className="text-success mt-2 d-block">
+                    ✓ Horário selecionado: 15h30
+                  </small>
+                </div>
+
+                {/* Botão de confirmação — rola para a seção de planos */}
+                <button
+                  className="btn btn-success w-100 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  onClick={() =>
+                    document
+                      .querySelector("#plans")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  Confirmar agendamento <ArrowRight size={16} />
+                </button>
+
+                {/* Nota informativa — explica que precisa criar conta */}
+                <p className="text-center text-secondary small mb-0">
+                  Crie sua conta gratuitamente para confirmar
+                </p>
               </div>
             </div>
           </div>
