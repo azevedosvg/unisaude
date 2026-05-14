@@ -1,89 +1,138 @@
+// components/NavBar.jsx
+// Componente de navegação principal da aplicação
+// Recebe os links de navegação via props e renderiza o menu
+
 import { useState, useEffect } from "react";
 import { Heart, Menu, X, ChevronRight } from "lucide-react";
 
-// A NavBar recebe a prop "links" que é um array de objetos { label, href }
 export function NavBar({ links }) {
-  // Estado para controlar se o menu mobile está aberto ou fechado
   const [isOpen, setIsOpen] = useState(false);
-
-  // Estado para detectar se o usuário rolou a página
-  // Quando scrolled é true, adicionamos fundo branco na navbar
   const [scrolled, setScrolled] = useState(false);
 
-  // useEffect para monitorar o scroll da página
-  // O array vazio [] significa que esse efeito roda só uma vez, quando o componente monta
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup: remove o listener quando o componente desmonta
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Função para navegar suavemente até a seção clicada
   const handleNav = (href) => {
-    setIsOpen(false); // Fecha o menu mobile ao clicar
+    setIsOpen(false);
     const element = document.querySelector(href);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-md fixed-top transition-all ${scrolled ? "bg-white shadow-sm" : "bg-transparent"}`}
-    >
-      <div className="container">
-        {/* Logo da aplicação */}
-        <a className="navbar-brand d-flex align-items-center gap-2" href="#">
-          <div
-            className="bg-success rounded-2 d-flex align-items-center justify-content-center"
-            style={{ width: 32, height: 32 }}
-          >
-            <Heart size={16} className="text-white fill-white" />
-          </div>
-          <span className="fw-bold fs-5 text-dark">
-            Uni <span className="text-success">Saúde</span>
-          </span>
-        </a>
+    <>
+      {/* Navbar desktop */}
+      <nav
+        className={`d-none d-md-block fixed-top ${scrolled ? "bg-white shadow-sm" : "bg-transparent"}`}
+        style={{ transition: "all 0.3s ease" }}
+      >
+        <div className="container">
+          <div className="d-flex align-items-center justify-content-between py-3">
+            {/* Logo */}
+            <a
+              className="d-flex align-items-center gap-2 text-decoration-none"
+              href="#"
+            >
+              <div
+                className="bg-success rounded-2 d-flex align-items-center justify-content-center"
+                style={{ width: 32, height: 32 }}
+              >
+                <Heart size={16} className="text-white fill-white" />
+              </div>
+              <span className="fw-bold fs-5 text-dark">
+                Uni <span className="text-success">Saúde</span>
+              </span>
+            </a>
 
-        {/* Botão hamburger para mobile */}
-        <button
-          className="navbar-toggler border-0"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-
-        {/* Links de navegação — colapsa em mobile */}
-        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
-          {/* Links centrais */}
-          <ul className="navbar-nav mx-auto gap-1">
-            {links.map((link) => (
-              <li className="nav-item" key={link.href}>
+            {/* Links */}
+            <div className="d-flex align-items-center gap-1">
+              {links.map((link) => (
                 <button
-                  className="nav-link btn btn-link text-decoration-none text-secondary fw-medium"
+                  key={link.href}
+                  className="btn btn-link text-decoration-none text-secondary fw-medium small"
                   onClick={() => handleNav(link.href)}
                 >
                   {link.label}
                 </button>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
 
-          {/* Botões de ação */}
-          <div className="d-flex gap-2 mt-2 mt-md-0">
-            <button className="btn btn-outline-success btn-sm px-3">
-              Entrar
-            </button>
-            <button
-              className="btn btn-success btn-sm px-3 d-flex align-items-center gap-1"
-              onClick={() => handleNav("#plans")}
+            {/* Botões */}
+            <div className="d-flex gap-2">
+              <button className="btn btn-outline-success btn-sm px-3">
+                Entrar
+              </button>
+              <button
+                className="btn btn-success btn-sm px-3 d-flex align-items-center gap-1"
+                onClick={() => handleNav("#plans")}
+              >
+                Começar grátis <ChevronRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Navbar mobile — botão fixo no topo */}
+      <div className="d-md-none fixed-top bg-white shadow-sm">
+        <div className="container">
+          <div className="d-flex align-items-center justify-content-between py-3">
+            <a
+              className="d-flex align-items-center gap-2 text-decoration-none"
+              href="#"
             >
-              Começar grátis <ChevronRight size={14} />
+              <div
+                className="bg-success rounded-2 d-flex align-items-center justify-content-center"
+                style={{ width: 32, height: 32 }}
+              >
+                <Heart size={16} className="text-white fill-white" />
+              </div>
+              <span className="fw-bold text-dark">
+                Uni <span className="text-success">Saúde</span>
+              </span>
+            </a>
+            <button
+              className="btn btn-link text-dark p-0"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
-    </nav>
+
+      {/* Menu mobile — drawer que desce quando aberto */}
+      <div
+        className="d-md-none fixed-top bg-white shadow"
+        style={{
+          top: 64,
+          transform: isOpen ? "translateY(0)" : "translateY(-120%)",
+          transition: "transform 0.3s ease",
+          zIndex: 999,
+        }}
+      >
+        <div className="container py-3 d-flex flex-column gap-2">
+          {links.map((link) => (
+            <button
+              key={link.href}
+              className="btn btn-link text-decoration-none text-secondary fw-medium text-start px-0"
+              onClick={() => handleNav(link.href)}
+            >
+              {link.label}
+            </button>
+          ))}
+          <hr className="my-2" />
+          <button className="btn btn-outline-success w-100">Entrar</button>
+          <button
+            className="btn btn-success w-100"
+            onClick={() => handleNav("#plans")}
+          >
+            Começar grátis
+          </button>
+        </div>
+      </div>
+    </>
   );
 }

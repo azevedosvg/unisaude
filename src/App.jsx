@@ -1,9 +1,15 @@
 // App.jsx
 // Componente raiz da aplicação
-// Importa e organiza todos os componentes da página
+// Importa e organiza todos os componentes da página na ordem correta
 
 import { NavBar } from "./components/NavBar";
 import { HeroSection } from "./components/HeroSection";
+import { ServicesSection } from "./components/ServicesSection";
+import { DifferentialsSection } from "./components/DifferentialsSection";
+import { PlansSection } from "./components/PlansSection";
+import { TestimonialsSection } from "./components/TestimonialsSection";
+import { ContactSection } from "./components/ContactSection";
+import { Footer } from "./components/Footer";
 import { navLinks } from "./data";
 
 export default function App() {
@@ -18,7 +24,14 @@ export default function App() {
           ctaText="Começar gratuitamente"
           ctaSecondary="Ver serviços"
         />
+        <ServicesSection />
+        <DifferentialsSection />
+        <PlansSection />
+        <TestimonialsSection />
+        <ContactSection />
       </main>
+
+      <Footer />
     </div>
   );
 }
