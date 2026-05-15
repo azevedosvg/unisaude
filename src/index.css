@@ -1,35 +1,24 @@
-/* index.css */
-/* Estilos globais e personalizações da Uni Saúde */
-/* O Bootstrap cuida da maior parte do layout — aqui ficam apenas os ajustes finos */
-
-/* ========== VARIÁVEIS DE COR ========== */
-/* Definimos as cores da marca como variáveis CSS para reutilizar em todo o projeto */
 :root {
-  --brand-green:        #16a34a; /* Verde principal da marca */
-  --brand-green-light:  #f0faf4; /* Verde bem claro para fundos */
-  --brand-green-border: #b4e6c9; /* Verde para bordas e detalhes */
+  --brand-green: #16a34a;
+  --brand-green-light: #f0faf4;
+  --brand-green-border: #b4e6c9;
   --hero-bg: linear-gradient(135deg, #f0faf4 0%, #ffffff 50%, #f0fdfa 100%);
 }
 
-/* ========== HERO SECTION ========== */
-/* Classe usada no fundo da seção principal */
-/* Usa a variável --hero-bg definida acima */
 .hero-section {
-  background: var(--hero-bg) !important;
+  background: var(--hero-bg);
 }
 
-/* ========== BADGES PERSONALIZADOS ========== */
-/* Estilo dos badges verdes usados em todas as seções */
-/* Em vez de repetir o mesmo style inline em cada componente, centralizamos aqui */
 .badge-brand {
-  background: var(--brand-green-light)  !important;
-  color:      #187c51                   !important;
-  border:     1px solid var(--brand-green-border) !important;
+  background: var(--brand-green-light);
+  color: #187c51;
+  border: 1px solid var(--brand-green-border);
 }
 
-/* ========== TRANSIÇÕES SUAVES ========== */
-/* Aplica uma transição suave em todos os elementos ao passar o mouse */
-/* Isso deixa as animações de hover mais fluidas em toda a aplicação */
-*, *::before, *::after {
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }

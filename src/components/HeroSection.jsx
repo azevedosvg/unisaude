@@ -1,8 +1,3 @@
-// components/HeroSection.jsx
-// Seção principal (banner) da página
-// É a primeira coisa que o usuário vê ao abrir o site
-// Recebe o conteúdo textual via props para facilitar personalização
-
 import {
   ArrowRight,
   Play,
@@ -12,30 +7,23 @@ import {
   Clock,
 } from "lucide-react";
 
-// Props recebidas:
-// - title: primeira parte do título principal
-// - subtitle: texto descritivo abaixo do título
-// - ctaText: texto do botão principal (verde)
-// - ctaSecondary: texto do botão secundário (outline)
-export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
-  // Horários disponíveis para agendamento — exibidos como botões de seleção
-  const horarios = ["09h00", "11h00", "14h00", "15h30", "17h00"];
+const horarios = ["09h00", "11h00", "14h00", "15h30", "17h00"];
 
+const scrollTo = (id) =>
+  document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+
+export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
   return (
     <section className="min-vh-100 d-flex align-items-center pt-5 hero-section">
       <div className="container py-5">
         <div className="row align-items-center g-5">
-          {/* ========== COLUNA ESQUERDA — TEXTO ========== */}
           <div className="col-12 col-lg-6 d-flex flex-column gap-4">
-            {/* Título principal */}
             <h1 className="display-4 fw-bold lh-sm">
               {title} <span className="text-success">você merece</span>
             </h1>
 
-            {/* Subtítulo */}
             <p className="lead text-secondary">{subtitle}</p>
 
-            {/* Lista de vantagens rápidas */}
             <ul className="list-unstyled d-flex flex-column gap-2">
               {[
                 "Consultas em menos de 3 minutos",
@@ -55,31 +43,21 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
               ))}
             </ul>
 
-            {/* Botões de ação */}
             <div className="d-flex flex-wrap gap-3">
               <button
                 className="btn btn-success btn-lg d-flex align-items-center gap-2"
-                onClick={() =>
-                  document
-                    .querySelector("#plans")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => scrollTo("#plans")}
               >
                 {ctaText} <ArrowRight size={18} />
               </button>
               <button
                 className="btn btn-outline-success btn-lg d-flex align-items-center gap-2"
-                onClick={() =>
-                  document
-                    .querySelector("#services")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => scrollTo("#services")}
               >
                 <Play size={16} /> {ctaSecondary}
               </button>
             </div>
 
-            {/* Social proof — avatares empilhados + estrelas + contagem */}
             <div className="d-flex align-items-center gap-3">
               <div className="d-flex">
                 {["A", "C", "M", "R", "L"].map((initial, i) => (
@@ -114,12 +92,8 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
             </div>
           </div>
 
-          {/* ========== COLUNA DIREITA — CARD DE AGENDAMENTO ========== */}
-          {/* Simula como seria agendar uma consulta no app */}
-          {/* O botão de confirmar leva para a seção de planos */}
           <div className="col-12 col-lg-6">
             <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
-              {/* Header do card com gradiente verde */}
               <div
                 className="p-4 text-white"
                 style={{
@@ -133,7 +107,6 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
               </div>
 
               <div className="p-4 d-flex flex-column gap-4">
-                {/* Campo de busca de especialidade */}
                 <div>
                   <label className="form-label small fw-semibold text-dark">
                     Buscar especialidade
@@ -151,16 +124,14 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                   </div>
                 </div>
 
-                {/* Médica disponível para a especialidade buscada */}
                 <div>
                   <label className="form-label small fw-semibold text-dark">
                     Profissional disponível
                   </label>
                   <div
                     className="d-flex align-items-center gap-3 p-3 rounded-3 border border-success"
-                    style={{ background: "#f0faf4" }}
+                    style={{ background: "var(--brand-green-light)" }}
                   >
-                    {/* Avatar com iniciais da médica */}
                     <div
                       className="rounded-3 d-flex align-items-center justify-content-center bg-success text-white fw-bold flex-shrink-0"
                       style={{ width: 48, height: 48 }}
@@ -174,7 +145,6 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                       <small className="text-secondary">
                         Cardiologista · CRM 54321
                       </small>
-                      {/* Avaliação e número de consultas */}
                       <div className="d-flex align-items-center gap-1 mt-1">
                         <Star
                           size={10}
@@ -189,14 +159,12 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                         </small>
                       </div>
                     </div>
-                    {/* Indicador de status online */}
                     <span className="badge rounded-pill bg-success px-2 py-1 small">
                       🟢 Online
                     </span>
                   </div>
                 </div>
 
-                {/* Horários disponíveis — o 15h30 vem selecionado por padrão */}
                 <div>
                   <label className="form-label small fw-semibold text-dark d-flex align-items-center gap-1">
                     <Clock size={14} className="text-success" /> Horários
@@ -218,19 +186,13 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                   </small>
                 </div>
 
-                {/* Botão de confirmação — rola para a seção de planos */}
                 <button
                   className="btn btn-success w-100 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
-                  onClick={() =>
-                    document
-                      .querySelector("#plans")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  onClick={() => scrollTo("#plans")}
                 >
                   Confirmar agendamento <ArrowRight size={16} />
                 </button>
 
-                {/* Nota informativa — explica que precisa criar conta */}
                 <p className="text-center text-secondary small mb-0">
                   Crie sua conta gratuitamente para confirmar
                 </p>

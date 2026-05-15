@@ -1,17 +1,12 @@
-// components/DifferentialsSection.jsx
-// Seção de diferenciais e métricas da plataforma
-// Contém três partes: métricas de impacto, cards de diferenciais e banner de especialidades
-
-import * as LucideIcons        from "lucide-react"
+import * as LucideIcons             from "lucide-react"
 import { differentials, metrics } from "../data"
 
-// ========== COMPONENTE INTERNO ==========
-// MetricCard é um componente auxiliar usado apenas nesta seção
-// Por isso fica no mesmo arquivo em vez de ter um arquivo separado
-// Recebe value, label e icon via props
-function MetricCard({ value, label, icon }) {
+const especialidades = [
+  "Clínica Geral", "Cardiologia", "Pediatria", "Psicologia",
+  "Nutrição", "Dermatologia", "Ginecologia", "Ortopedia", "+ 42 outras",
+]
 
-  // Carrega o ícone dinamicamente pelo nome recebido via props
+function MetricCard({ value, label, icon }) {
   const Icon = LucideIcons[icon] || LucideIcons.TrendingUp
 
   return (
@@ -22,44 +17,29 @@ function MetricCard({ value, label, icon }) {
         onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
         onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
       >
-        {/* Ícone em círculo verde claro */}
         <div
           className="rounded-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 mx-auto mb-3"
           style={{ width: 48, height: 48 }}
         >
           <Icon size={22} className="text-success" />
         </div>
-
-        {/* Valor da métrica em destaque */}
         <h3 className="fw-bold text-dark mb-1">{value}</h3>
-
-        {/* Descrição da métrica */}
         <small className="text-secondary">{label}</small>
       </div>
     </div>
   )
 }
 
-// ========== COMPONENTE PRINCIPAL ==========
 export function DifferentialsSection() {
   return (
     <section id="differentials" className="py-5 bg-white">
       <div className="container py-4">
-
-        {/* ---- MÉTRICAS ---- */}
-        {/* col-6 col-lg-3: 2 por linha em mobile, 4 por linha em desktop */}
         <div className="row g-4 mb-5">
           {metrics.map((metric) => (
-            <MetricCard
-              key={metric.label}
-              value={metric.value}
-              label={metric.label}
-              icon={metric.icon}
-            />
+            <MetricCard key={metric.label} {...metric} />
           ))}
         </div>
 
-        {/* ---- CABEÇALHO ---- */}
         <div className="text-center mb-5">
           <span className="badge rounded-pill px-3 py-2 mb-3 d-inline-block badge-brand">
             POR QUE ESCOLHER A UNI SAÚDE
@@ -74,10 +54,8 @@ export function DifferentialsSection() {
           </p>
         </div>
 
-        {/* ---- CARDS DE DIFERENCIAIS ---- */}
         <div className="row g-4 mb-5">
           {differentials.map((item) => {
-            // Carrega o ícone de cada diferencial dinamicamente
             const Icon = LucideIcons[item.icon] || LucideIcons.Star
 
             return (
@@ -86,12 +64,10 @@ export function DifferentialsSection() {
                   className="p-4 rounded-4 border border-light h-100"
                   style={{ transition: "all 0.2s" }}
                   onMouseEnter={(e) => {
-                    // Muda a borda e o fundo ao passar o mouse
-                    e.currentTarget.style.borderColor = "#b4e6c9"
-                    e.currentTarget.style.background  = "#f0faf4"
+                    e.currentTarget.style.borderColor = "var(--brand-green-border)"
+                    e.currentTarget.style.background  = "var(--brand-green-light)"
                   }}
                   onMouseLeave={(e) => {
-                    // Volta ao estado original ao sair
                     e.currentTarget.style.borderColor = ""
                     e.currentTarget.style.background  = ""
                   }}
@@ -110,7 +86,6 @@ export function DifferentialsSection() {
           })}
         </div>
 
-        {/* ---- BANNER DE ESPECIALIDADES ---- */}
         <div
           className="rounded-4 p-5 text-white text-center"
           style={{ background: "linear-gradient(135deg, #22c55e, #14b8a6)" }}
@@ -119,13 +94,8 @@ export function DifferentialsSection() {
           <p className="opacity-75 mb-4">
             Cardiologia, pediatria, saúde mental, nutrição e muito mais.
           </p>
-
-          {/* Tags de especialidades — geradas a partir de um array estático */}
           <div className="d-flex flex-wrap gap-2 justify-content-center">
-            {[
-              "Clínica Geral", "Cardiologia", "Pediatria", "Psicologia",
-              "Nutrição", "Dermatologia", "Ginecologia", "Ortopedia", "+ 42 outras",
-            ].map((esp) => (
+            {especialidades.map((esp) => (
               <span
                 key={esp}
                 className="badge rounded-pill px-3 py-2"
@@ -139,7 +109,6 @@ export function DifferentialsSection() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   )

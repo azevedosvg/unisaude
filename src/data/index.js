@@ -1,19 +1,14 @@
-// data/index.js
-// Arquivo central de dados da aplicação
-// Todos os textos, ícones e configurações ficam aqui
-// Os componentes importam esses dados e os exibem via props
-
 // ========== SERVIÇOS ==========
-// Cada objeto representa um card na seção de serviços
-// O campo "icon" é o nome do componente Lucide (carregado dinamicamente no ServiceCard)
+// "icon" é o nome do componente Lucide (carregado dinamicamente no ServiceCard)
+// featured: true = card recebe borda verde e badge "Popular"
 export const services = [
   {
     id: 1,
-    icon: "Video",           // Ícone de câmera de vídeo
+    icon: "Video",
     title: "Teleconsulta",
     description: "Consulte médicos especialistas por videochamada sem sair de casa, com segurança e praticidade.",
     category: "Consultas",
-    featured: true,          // true = card recebe borda verde e badge "Popular"
+    featured: true,
     cta: "Agendar consulta",
   },
   {
@@ -22,7 +17,6 @@ export const services = [
     title: "Prontuário Digital",
     description: "Acesse seu histórico médico completo, receitas e laudos em um só lugar, a qualquer momento.",
     category: "Registros",
-    featured: false,
     cta: "Ver prontuário",
   },
   {
@@ -31,7 +25,6 @@ export const services = [
     title: "Monitoramento Contínuo",
     description: "Acompanhe seus sinais vitais com integração de wearables e alertas inteligentes.",
     category: "Monitoramento",
-    featured: false,
     cta: "Conectar dispositivo",
   },
   {
@@ -40,7 +33,6 @@ export const services = [
     title: "Gestão de Medicamentos",
     description: "Lembretes inteligentes para tomar seus remédios no horário certo.",
     category: "Farmácia",
-    featured: false,
     cta: "Configurar alertas",
   },
   {
@@ -49,7 +41,6 @@ export const services = [
     title: "Saúde Mental",
     description: "Sessões de psicologia e psiquiatria online com profissionais certificados.",
     category: "Mental",
-    featured: false,
     cta: "Falar com psicólogo",
   },
   {
@@ -58,7 +49,6 @@ export const services = [
     title: "Exames Laboratoriais",
     description: "Solicite exames e receba resultados digitais diretamente no seu perfil.",
     category: "Exames",
-    featured: false,
     cta: "Solicitar exame",
   },
 ]
@@ -115,14 +105,14 @@ export const metrics = [
 
 // ========== PLANOS ==========
 // featured: true = plano recebe destaque visual (borda verde, banner "Mais popular")
+// period: "" = sem período exibido
 export const plans = [
   {
     id: 1,
     name: "Básico",
     price: "Gratuito",
-    period: "",              // Campo vazio = sem período exibido
+    period: "",
     description: "Para quem quer experimentar a saúde digital",
-    featured: false,
     features: [
       "1 teleconsulta por mês",
       "Prontuário digital básico",
@@ -137,7 +127,7 @@ export const plans = [
     price: "R$ 49",
     period: "/mês",
     description: "O plano mais popular para cuidados contínuos",
-    featured: true,          // Este plano recebe o destaque visual
+    featured: true,
     features: [
       "Teleconsultas ilimitadas",
       "Prontuário digital completo",
@@ -154,7 +144,6 @@ export const plans = [
     price: "R$ 119",
     period: "/mês",
     description: "Cobertura completa para até 4 pessoas",
-    featured: false,
     features: [
       "Tudo do Essencial",
       "Até 4 perfis familiares",
