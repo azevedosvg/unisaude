@@ -17,13 +17,12 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
     <section className="min-vh-100 d-flex align-items-center pt-5 hero-section">
       <div className="container py-5">
         <div className="row align-items-center g-5">
-          <div className="col-12 col-lg-6 d-flex flex-column gap-4">
+          <div className="col-12 col-lg-6 d-flex flex-column gap-4 text-center text-lg-start align-items-center align-items-lg-start">
+            {" "}
             <h1 className="display-4 fw-bold lh-sm">
               {title} <span className="text-success">você merece</span>
             </h1>
-
             <p className="lead text-secondary">{subtitle}</p>
-
             <ul className="list-unstyled d-flex flex-column gap-2">
               {[
                 "Consultas em menos de 3 minutos",
@@ -42,8 +41,8 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                 </li>
               ))}
             </ul>
-
-            <div className="d-flex flex-wrap gap-3">
+            <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+              {" "}
               <button
                 className="btn btn-success btn-lg d-flex align-items-center gap-2"
                 onClick={() => scrollTo("#plans")}
@@ -57,7 +56,6 @@ export function HeroSection({ title, subtitle, ctaText, ctaSecondary }) {
                 <Play size={16} /> {ctaSecondary}
               </button>
             </div>
-
             <div className="d-flex align-items-center gap-3">
               <div className="d-flex">
                 {["A", "C", "M", "R", "L"].map((initial, i) => (
