@@ -9,10 +9,10 @@
 
 ## Equipe
 
-| Nome | Função |
+| Nomes
 |------|--------|
-| Gabriel de Azevedo Silva | Desenvolvimento Front-End |
-| Paulo Victor Rodrigues Moraes | Desenvolvimento Front-End |
+| Gabriel de Azevedo Silva
+| Paulo Victor Rodrigues Moraes
 
 Trabalho acadêmico desenvolvido para a disciplina de **Desenvolvimento Web Front-End**.
 
@@ -41,13 +41,13 @@ A aplicação foi construída seguindo os princípios de **componentização**, 
 
 ## Tecnologias Utilizadas
 
-| Tecnologia | Versão | Finalidade |
-|---|---|---|
-| **React** | 18 | Biblioteca principal para construção da interface |
-| **Vite** | 5 | Ferramenta de build e servidor de desenvolvimento |
-| **Bootstrap** | 5.3 | Framework CSS para grid responsivo e componentes visuais |
-| **Lucide React** | 0.383 | Biblioteca de ícones vetoriais |
-| **Node.js** | 18+ | Ambiente de execução JavaScript |
+| Tecnologia       | Versão | Finalidade                                               |
+| ---------------- | ------ | -------------------------------------------------------- |
+| **React**        | 18     | Biblioteca principal para construção da interface        |
+| **Vite**         | 5      | Ferramenta de build e servidor de desenvolvimento        |
+| **Bootstrap**    | 5.3    | Framework CSS para grid responsivo e componentes visuais |
+| **Lucide React** | 0.383  | Biblioteca de ícones vetoriais                           |
+| **Node.js**      | 18+    | Ambiente de execução JavaScript                          |
 
 ---
 
@@ -117,7 +117,7 @@ O sistema de grid de 12 colunas do Bootstrap é aplicado em todas as seções:
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/unisaude.git
+git clone https://github.com/azevedosvg/unisaude.git
 
 # 2. Acesse a pasta do projeto
 cd unisaude
@@ -146,20 +146,20 @@ npm run preview
 
 ## Requisitos Atendidos
 
-| Requisito | Status |
-|---|---|
-| Projeto criado com Vite + React | Atendido |
-| Componentização com componentes próprios | Atendido — 9 componentes |
-| Uso de props para conteúdo dinâmico | Atendido — NavBar, HeroSection, ServiceCard |
-| Integração com Bootstrap (Trilha 1) | Atendido |
-| Ícones com Lucide React | Atendido |
-| Responsividade Mobile First | Atendido |
-| Header com nome, menu e navegação | Atendido |
-| Banner principal com título e CTA | Atendido |
-| Mínimo de 4 cards de serviços | Atendido — 6 cards |
-| Seção de destaque com diferenciais | Atendido |
-| Footer com informações da aplicação | Atendido |
-| Estilização complementar ao Bootstrap | Atendido — variáveis CSS customizadas |
+| Requisito                                | Status                                      |
+| ---------------------------------------- | ------------------------------------------- |
+| Projeto criado com Vite + React          | Atendido                                    |
+| Componentização com componentes próprios | Atendido — 9 componentes                    |
+| Uso de props para conteúdo dinâmico      | Atendido — NavBar, HeroSection, ServiceCard |
+| Integração com Bootstrap (Trilha 1)      | Atendido                                    |
+| Ícones com Lucide React                  | Atendido                                    |
+| Responsividade Mobile First              | Atendido                                    |
+| Header com nome, menu e navegação        | Atendido                                    |
+| Banner principal com título e CTA        | Atendido                                    |
+| Mínimo de 4 cards de serviços            | Atendido — 6 cards                          |
+| Seção de destaque com diferenciais       | Atendido                                    |
+| Footer com informações da aplicação      | Atendido                                    |
+| Estilização complementar ao Bootstrap    | Atendido — variáveis CSS customizadas       |
 
 ---
 
@@ -172,4 +172,4 @@ npm run preview
 
 ---
 
-*Desenvolvido para fins acadêmicos — 2025*
+_Desenvolvido para fins acadêmicos — 2025_

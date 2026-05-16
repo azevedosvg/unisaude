@@ -1,12 +1,19 @@
-import { Star, Quote, Lock, Building2, ShieldCheck, BadgeCheck } from "lucide-react"
-import { testimonials } from "../data"
+import {
+  Star,
+  Quote,
+  Lock,
+  Building2,
+  ShieldCheck,
+  BadgeCheck,
+} from "lucide-react";
+import { testimonials } from "../data";
 
 const trustBadges = [
-  { label: "LGPD Compliance", Icon: Lock        },
-  { label: "CFM Parceiro",    Icon: Building2   },
-  { label: "ISO 27001",       Icon: ShieldCheck },
-  { label: "HIPAA Ready",     Icon: BadgeCheck  },
-]
+  { label: "LGPD Compliance", Icon: Lock },
+  { label: "CFM Parceiro", Icon: Building2 },
+  { label: "ISO 27001", Icon: ShieldCheck },
+  { label: "HIPAA Ready", Icon: BadgeCheck },
+];
 
 export function TestimonialsSection() {
   return (
@@ -45,14 +52,23 @@ export function TestimonialsSection() {
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <p className="fw-semibold small text-dark mb-0">{testimonial.name}</p>
-                      <small className="text-secondary">{testimonial.role}</small>
+                      <p className="fw-semibold small text-dark mb-0">
+                        {testimonial.name}
+                      </p>
+                      <small className="text-secondary">
+                        {testimonial.role}
+                      </small>
                     </div>
                   </div>
 
                   <div className="d-flex gap-1">
                     {[...Array(testimonial.stars)].map((_, i) => (
-                      <Star key={i} size={12} fill="#ffc107" className="text-warning" />
+                      <Star
+                        key={i}
+                        size={12}
+                        fill="#ffc107"
+                        className="text-warning"
+                      />
                     ))}
                   </div>
                 </div>
@@ -63,7 +79,10 @@ export function TestimonialsSection() {
 
         <div className="d-flex flex-wrap justify-content-center gap-4 mt-5">
           {trustBadges.map(({ label, Icon }) => (
-            <div key={label} className="d-flex align-items-center gap-2 text-secondary small fw-medium">
+            <div
+              key={label}
+              className="d-flex align-items-center gap-2 text-secondary small fw-medium"
+            >
               <div
                 className="rounded-2 d-flex align-items-center justify-content-center bg-success bg-opacity-10"
                 style={{ width: 28, height: 28 }}
@@ -76,5 +95,5 @@ export function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

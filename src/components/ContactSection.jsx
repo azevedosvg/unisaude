@@ -1,28 +1,29 @@
-import { useState }                                    from "react"
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react"
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 
 const contactInfo = [
-  { Icon: Mail,   label: "E-mail",   value: "contato@unisaude.com.br"    },
-  { Icon: Phone,  label: "Telefone", value: "0800 000 0000 (gratuito)"   },
+  { Icon: Mail, label: "E-mail", value: "contato@unisaude.com.br" },
+  { Icon: Phone, label: "Telefone", value: "0800 000 0000 (gratuito)" },
   { Icon: MapPin, label: "Endereço", value: "Belo Horizonte, MG, Brasil" },
-]
+];
 
 const horarios = [
   { label: "Teleconsultas", value: "24h / 7 dias" },
-  { label: "Suporte Chat",  value: "24h / 7 dias" },
-  { label: "Suporte Tel.",  value: "08h – 22h"    },
-]
+  { label: "Suporte Chat", value: "24h / 7 dias" },
+  { label: "Suporte Tel.", value: "08h – 22h" },
+];
 
 export function ContactSection() {
-  const [form, setForm]           = useState({ name: "", email: "", message: "" })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (form.name && form.email && form.message) setSubmitted(true)
-  }
+    e.preventDefault();
+    if (form.name && form.email && form.message) setSubmitted(true);
+  };
 
   return (
     <section id="contact" className="py-5" style={{ background: "#f8fafc" }}>
@@ -43,7 +44,10 @@ export function ContactSection() {
         <div className="row g-4 justify-content-center">
           <div className="col-12 col-lg-4 d-flex flex-column gap-3">
             {contactInfo.map(({ Icon, label, value }) => (
-              <div key={label} className="card border-0 shadow-sm rounded-4 p-4 d-flex flex-row align-items-center gap-3">
+              <div
+                key={label}
+                className="card border-0 shadow-sm rounded-4 p-4 d-flex flex-row align-items-center gap-3"
+              >
                 <div
                   className="rounded-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 flex-shrink-0"
                   style={{ width: 40, height: 40 }}
@@ -51,7 +55,9 @@ export function ContactSection() {
                   <Icon size={18} className="text-success" />
                 </div>
                 <div>
-                  <small className="text-secondary text-uppercase fw-semibold">{label}</small>
+                  <small className="text-secondary text-uppercase fw-semibold">
+                    {label}
+                  </small>
                   <p className="fw-medium text-dark small mb-0">{value}</p>
                 </div>
               </div>
@@ -63,7 +69,10 @@ export function ContactSection() {
               </small>
               <div className="d-flex flex-column gap-2">
                 {horarios.map(({ label, value }) => (
-                  <div key={label} className="d-flex justify-content-between small">
+                  <div
+                    key={label}
+                    className="d-flex justify-content-between small"
+                  >
                     <span className="text-secondary">{label}</span>
                     <span className="fw-medium text-dark">{value}</span>
                   </div>
@@ -83,7 +92,9 @@ export function ContactSection() {
                     <CheckCircle2 size={32} className="text-success" />
                   </div>
                   <h5 className="fw-bold text-dark mb-2">Mensagem enviada!</h5>
-                  <p className="text-secondary">Nossa equipe responderá em até 2 horas.</p>
+                  <p className="text-secondary">
+                    Nossa equipe responderá em até 2 horas.
+                  </p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="btn btn-link text-success text-decoration-none small fw-medium mt-2"
@@ -92,10 +103,15 @@ export function ContactSection() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+                <form
+                  onSubmit={handleSubmit}
+                  className="d-flex flex-column gap-3"
+                >
                   <div className="row g-3">
                     <div className="col-12 col-sm-6">
-                      <label className="form-label small fw-medium text-dark">Nome</label>
+                      <label className="form-label small fw-medium text-dark">
+                        Nome
+                      </label>
                       <input
                         type="text"
                         name="name"
@@ -107,7 +123,9 @@ export function ContactSection() {
                       />
                     </div>
                     <div className="col-12 col-sm-6">
-                      <label className="form-label small fw-medium text-dark">E-mail</label>
+                      <label className="form-label small fw-medium text-dark">
+                        E-mail
+                      </label>
                       <input
                         type="email"
                         name="email"
@@ -121,7 +139,9 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="form-label small fw-medium text-dark">Assunto</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Assunto
+                    </label>
                     <select className="form-select rounded-3">
                       <option>Dúvida sobre planos</option>
                       <option>Suporte técnico</option>
@@ -131,7 +151,9 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="form-label small fw-medium text-dark">Mensagem</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Mensagem
+                    </label>
                     <textarea
                       name="message"
                       value={form.message}
@@ -157,5 +179,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

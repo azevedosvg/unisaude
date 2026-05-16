@@ -1,21 +1,32 @@
-import * as LucideIcons             from "lucide-react"
-import { differentials, metrics } from "../data"
+import * as LucideIcons from "lucide-react";
+import { differentials, metrics } from "../data";
 
 const especialidades = [
-  "Clínica Geral", "Cardiologia", "Pediatria", "Psicologia",
-  "Nutrição", "Dermatologia", "Ginecologia", "Ortopedia", "+ 42 outras",
-]
+  "Clínica Geral",
+  "Cardiologia",
+  "Pediatria",
+  "Psicologia",
+  "Nutrição",
+  "Dermatologia",
+  "Ginecologia",
+  "Ortopedia",
+  "+ 42 outras",
+];
 
 function MetricCard({ value, label, icon }) {
-  const Icon = LucideIcons[icon] || LucideIcons.TrendingUp
+  const Icon = LucideIcons[icon] || LucideIcons.TrendingUp;
 
   return (
     <div className="col-6 col-lg-3">
       <div
         className="card border-0 shadow-sm rounded-4 p-4 text-center h-100"
         style={{ transition: "transform 0.2s" }}
-        onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
-        onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.transform = "translateY(-4px)")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.transform = "translateY(0)")
+        }
       >
         <div
           className="rounded-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 mx-auto mb-3"
@@ -27,7 +38,7 @@ function MetricCard({ value, label, icon }) {
         <small className="text-secondary">{label}</small>
       </div>
     </div>
-  )
+  );
 }
 
 export function DifferentialsSection() {
@@ -56,7 +67,7 @@ export function DifferentialsSection() {
 
         <div className="row g-4 mb-5">
           {differentials.map((item) => {
-            const Icon = LucideIcons[item.icon] || LucideIcons.Star
+            const Icon = LucideIcons[item.icon] || LucideIcons.Star;
 
             return (
               <div className="col-12 col-sm-6 col-lg-4" key={item.id}>
@@ -64,12 +75,14 @@ export function DifferentialsSection() {
                   className="p-4 rounded-4 border border-light h-100"
                   style={{ transition: "all 0.2s" }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "var(--brand-green-border)"
-                    e.currentTarget.style.background  = "var(--brand-green-light)"
+                    e.currentTarget.style.borderColor =
+                      "var(--brand-green-border)";
+                    e.currentTarget.style.background =
+                      "var(--brand-green-light)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = ""
-                    e.currentTarget.style.background  = ""
+                    e.currentTarget.style.borderColor = "";
+                    e.currentTarget.style.background = "";
                   }}
                 >
                   <div
@@ -79,10 +92,12 @@ export function DifferentialsSection() {
                     <Icon size={18} className="text-success" />
                   </div>
                   <h6 className="fw-semibold text-dark mb-2">{item.title}</h6>
-                  <p className="text-secondary small mb-0">{item.description}</p>
+                  <p className="text-secondary small mb-0">
+                    {item.description}
+                  </p>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -90,7 +105,9 @@ export function DifferentialsSection() {
           className="rounded-4 p-5 text-white text-center"
           style={{ background: "linear-gradient(135deg, #22c55e, #14b8a6)" }}
         >
-          <h3 className="fw-bold mb-2">Mais de 50 especialidades disponíveis</h3>
+          <h3 className="fw-bold mb-2">
+            Mais de 50 especialidades disponíveis
+          </h3>
           <p className="opacity-75 mb-4">
             Cardiologia, pediatria, saúde mental, nutrição e muito mais.
           </p>
@@ -111,5 +128,5 @@ export function DifferentialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
