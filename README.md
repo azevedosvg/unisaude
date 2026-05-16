@@ -16,6 +16,12 @@ Trabalho acadêmico desenvolvido para a disciplina de **Desenvolvimento Web Fron
 
 ---
 
+## Interface
+
+![Uni Saúde — Plataforma de Saúde Digital](./public/screenshotreadme.png)
+
+---
+
 ## Sobre o Projeto
 
 A **Uni Saúde** é uma aplicação web desenvolvida em React que simula o portal institucional de uma plataforma de saúde digital. O projeto representa uma interface moderna para apresentação de serviços, funcionalidades e planos de uma healthtech brasileira fictícia.
