@@ -130,16 +130,6 @@ npm run dev
 # http://localhost:5173
 ```
 
-### Build para produção
-
-```bash
-# Gera os arquivos otimizados na pasta /dist
-npm run build
-
-# Visualiza o build localmente
-npm run preview
-```
-
 ---
 
 ## Requisitos Atendidos
