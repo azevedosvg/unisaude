@@ -7,10 +7,8 @@
 
 ---
 
-## Equipe
+## Integrantes
 
-| Nomes
-|------|--------|
 | Gabriel de Azevedo Silva
 | Paulo Victor Rodrigues Moraes
 
