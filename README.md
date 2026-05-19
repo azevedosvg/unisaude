@@ -166,4 +166,4 @@ npm run dev
 
 ---
 
-_Desenvolvido para fins acadêmicos — 2025_
+_Desenvolvido para fins acadêmicos — 2026_

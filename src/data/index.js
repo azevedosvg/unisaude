@@ -126,7 +126,7 @@ export const plans = [
   {
     id: 2,
     name: "Essencial",
-    price: "R$ 49",
+    price: "R$ 69",
     period: "/mês",
     description: "O plano mais popular para cuidados contínuos",
     featured: true,
